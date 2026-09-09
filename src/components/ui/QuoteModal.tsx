@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import useAppDispatch from '@hooks/useAppDispatch';
 import useAppSelector from '@hooks/useAppSelector';
-import { closeQuoteModal } from '@store/uiSlice';
+import { closeQuoteModal, selectQuoteService } from '@store/uiSlice';
 import { SERVICES } from '@/data/services';
 import Button from './Button';
 import Input from './Input';
@@ -18,9 +18,10 @@ const BUDGETS = [
 export default function QuoteModal() {
   const dispatch = useAppDispatch();
   const isOpen = useAppSelector((state) => state.ui.isQuoteModalOpen);
+  const selectedQuoteService = useAppSelector((state) => state.ui.selectedQuoteService);
   const panelRef = useRef<HTMLDivElement>(null);
 
-  const [service, setService] = useState('graphic-design');
+  const service = selectedQuoteService ?? SERVICES[0].id;
   const [budget, setBudget] = useState('discuss');
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -168,7 +169,7 @@ export default function QuoteModal() {
                     <button
                       key={item.id}
                       type="button"
-                      onClick={() => setService(item.id)}
+                      onClick={() => dispatch(selectQuoteService(item.id))}
                       className={`p-3 rounded-lg border-2 text-xs font-bold text-left transition-all ${
                         service === item.id
                           ? 'border-teal bg-teal/10 text-secondary'

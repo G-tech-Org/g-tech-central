@@ -84,7 +84,7 @@ export default function Services() {
                   </ul>
                   <button
                     type="button"
-                    onClick={() => dispatch(openQuoteModal())}
+                    onClick={() => dispatch(openQuoteModal(service.id))}
                     className={`font-label-md text-label-md font-bold ${accent.split(' ')[0]} hover:opacity-70 transition-opacity`}
                   >
                     Discuss this service <span aria-hidden="true">→</span>
