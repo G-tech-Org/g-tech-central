@@ -34,7 +34,7 @@ export default function About() {
               Design, media, tech, and growth support from one trusted partner.
             </h1>
             <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed max-w-xl">
-              G-Tech is a creative and technical solutions company based in Yaoundé, Cameroon. We help businesses, brands, and individuals grow through graphic design, media production, professional ads campaigns, social media growth, software development, and reliable tech sales.
+              G-Tech is a creative and technical solutions company based in Bamenda, Cameroon. We help businesses, brands, and individuals grow through graphic design, media production, professional ads campaigns, social media growth, software development, and reliable tech sales.
             </p>
           </div>
           <div className="rounded-2xl bg-primary-container p-8 text-white soft-shadow relative overflow-hidden flex flex-col justify-between min-h-[260px]">

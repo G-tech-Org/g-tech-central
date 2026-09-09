@@ -31,7 +31,7 @@ export default function Home() {
         <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-section-padding lg:py-24 grid grid-cols-1 lg:grid-cols-2 gap-gutter items-center">
           <div className="z-10 space-y-stack-lg pr-0 lg:pr-12">
             <p className="font-label-md text-label-md text-teal font-bold uppercase tracking-widest">
-              Yaoundé, Cameroon
+              Bamenda, Cameroon
             </p>
             <h1 className="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-primary-container leading-tight">
               Design, media, and tech <br />

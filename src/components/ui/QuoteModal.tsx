@@ -23,6 +23,8 @@ export default function QuoteModal() {
   const [service, setService] = useState('graphic-design');
   const [budget, setBudget] = useState('discuss');
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -33,6 +35,8 @@ export default function QuoteModal() {
   function handleClose() {
     dispatch(closeQuoteModal());
     setSubmitted(false);
+    setIsSubmitting(false);
+    setSubmitError('');
   }
 
   useEffect(() => {
@@ -62,10 +66,40 @@ export default function QuoteModal() {
 
   if (!isOpen) return null;
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    console.log('Quote Request Submitted:', { ...formData, service, budget });
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setSubmitError('');
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: '22fd5396-65b1-414a-afc5-22adb9419072',
+          subject: `New quote request from ${formData.name}`,
+          from_name: 'G-Tech website quote form',
+          ...formData,
+          service,
+          budget: BUDGETS.find((item) => item.value === budget)?.label ?? budget,
+          message: formData.details,
+        }),
+      });
+      const result = (await response.json()) as { success?: boolean; message?: string };
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.message || 'Unable to submit your quote request.');
+      }
+
+      setSubmitted(true);
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : 'Unable to submit your quote request.');
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -120,6 +154,11 @@ export default function QuoteModal() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+              {submitError && (
+                <p className="rounded-lg bg-coral/10 px-4 py-3 text-sm text-coral" role="alert">
+                  {submitError}
+                </p>
+              )}
               <div>
                 <p className="text-xs font-semibold text-on-surface-variant uppercase tracking-wider block mb-2">
                   Service needed
@@ -203,8 +242,8 @@ export default function QuoteModal() {
                 <Button type="button" variant="ghost" onClick={handleClose}>
                   Cancel
                 </Button>
-                <Button type="submit" variant="primary">
-                  Submit quote request
+                <Button type="submit" variant="primary" disabled={isSubmitting}>
+                  {isSubmitting ? 'Submitting...' : 'Submit quote request'}
                 </Button>
               </div>
             </form>

@@ -55,7 +55,7 @@ export default function Footer() {
       </div>
       <div className="px-margin-mobile md:px-margin-desktop py-6 max-w-container-max mx-auto">
         <p className="font-body-md text-body-md text-on-primary opacity-70 text-sm">
-          © {new Date().getFullYear()} G-Tech. Yaoundé, Cameroon.
+          © {new Date().getFullYear()} G-Tech. Bamenda, Cameroon.
         </p>
       </div>
     </footer>
