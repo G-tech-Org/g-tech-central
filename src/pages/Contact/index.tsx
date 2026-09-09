@@ -35,8 +35,7 @@ export default function Contact() {
               Get in touch
             </h1>
             <p className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-8">
-              Use this form for general questions, partnerships, or an introduction. If you already know the project
-              you want built, request a quote instead.
+              Use this form for general inquiries, partnerships, or new project discussions. If you already know what you need, request a quote and we will guide you from there.
             </p>
             <div className="flex flex-col gap-4 text-on-surface-variant mb-8">
               <a href="mailto:g.technologies237@gmail.com" className="inline-flex items-center gap-3 hover:text-teal transition-colors">

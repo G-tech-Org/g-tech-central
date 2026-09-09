@@ -6,7 +6,17 @@ export interface NavLink {
 }
 
 export type ServiceAccent = 'teal' | 'coral' | 'navy';
-export type ServiceId = 'web' | 'apps' | 'design' | 'hardware';
+export type ServiceId =
+  | 'graphic-design'
+  | 'networking'
+  | 'videography'
+  | 'cinematography'
+  | 'ads-campaigns'
+  | 'social-media-growth'
+  | 'frontend-development'
+  | 'mobile-app-development'
+  | 'backend-development'
+  | 'gadgets';
 
 export interface Service {
   id: ServiceId;

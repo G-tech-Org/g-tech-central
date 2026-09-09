@@ -20,7 +20,7 @@ export default function QuoteModal() {
   const isOpen = useAppSelector((state) => state.ui.isQuoteModalOpen);
   const panelRef = useRef<HTMLDivElement>(null);
 
-  const [service, setService] = useState('web');
+  const [service, setService] = useState('graphic-design');
   const [budget, setBudget] = useState('discuss');
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({

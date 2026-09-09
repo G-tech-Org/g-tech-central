@@ -34,7 +34,7 @@ export default function Services() {
           Our Services
         </h1>
         <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
-          Web, mobile, brand, and hardware support—so your digital work and day-to-day tools stay in one place.
+          Creative, digital, and technical services designed to support your brand, online presence, and everyday business operations.
         </p>
       </section>
 

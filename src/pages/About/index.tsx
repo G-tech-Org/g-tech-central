@@ -1,55 +1,91 @@
 import { PageCta } from '@components/ui';
 
 const MILESTONES = [
-  { year: '2018', title: 'Foundation', body: 'G-Tech was established in Douala with a small team focused on practical digital solutions for local enterprises.', side: 'left' },
-  { year: '2020', title: 'Regional Expansion', body: 'Expanded our footprint across Central Africa, securing major contracts in telecommunications and finance.', side: 'right' },
-  { year: '2023', title: 'Global Reach', body: 'Launched international partnerships, working with teams across Europe and North America.', side: 'left' },
-  { year: 'Present', title: 'Innovating the Future', body: 'Pioneering AI integration and scalable cloud architectures for enterprise clients worldwide.', side: 'right' },
+  { year: '2017', title: 'The beginning', body: 'G-Tech started as a practical digital partner focused on helping businesses and creators solve everyday communication and technology challenges.', side: 'left' },
+  { year: '2019', title: 'Design & media growth', body: 'We expanded into branding, video, and digital campaigns to help businesses stand out in competitive markets.', side: 'right' },
+  { year: '2023', title: 'Tech and systems', body: 'We added frontend, backend, mobile app, and networking expertise to support both digital growth and reliable business operations.', side: 'left' },
+  { year: 'Now', title: 'Full-service partner', body: 'Today we help clients with design, media, growth, software development, networking, and gadget solutions under one roof.', side: 'right' },
 ] as const;
 
 const LEADERS = [
-  { name: 'Jean-Paul Kameni', role: 'Chief Executive Officer', image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=85', alt: 'Jean-Paul Kameni, Chief Executive Officer' },
-  { name: 'Marie T. Eboa', role: 'Chief Technology Officer', image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=85', alt: 'Marie T. Eboa, Chief Technology Officer' },
-  { name: 'David Njoya', role: 'Head of Product', image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=600&q=85', alt: 'David Njoya, Head of Product' },
-  { name: 'Sarah Bekolo', role: 'Director of Operations', image: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&q=85', alt: 'Sarah Bekolo, Director of Operations' },
+  {
+    name: 'Mbah Ajieh Gaston',
+    role: 'Founder & Chief Executive Officer',
+    image: '/team/mbah-ajieh-gaston-ceo.jpg',
+    bio: 'Leading G-Tech with a commitment to technical precision, business innovation, and transformative digital solutions across Cameroon and globally.',
+  },
+  {
+    name: 'Abiola',
+    role: 'Lead, Product Design',
+    image: '/team/abiola-lead-product-design.jpg',
+    bio: 'Crafting intuitive user interfaces, standout visual experiences, and high-impact design architectures across all digital platforms.',
+  },
 ];
 
 export default function About() {
   return (
     <main className="bg-surface">
+      {/* Hero Section */}
       <section className="bg-surface-container-lowest">
-        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-16 grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-10 lg:gap-16 items-center">
+        <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-16 grid grid-cols-1 md:grid-cols-[1.2fr_0.8fr] gap-10 lg:gap-16 items-center">
           <div>
             <p className="font-label-md text-label-md text-teal font-bold uppercase tracking-widest mb-4">Who we are</p>
-            <h1 className="font-headline-md text-headline-md md:font-display-lg-mobile md:text-display-lg-mobile text-primary-container leading-tight mb-5">Architecting tomorrow&apos;s solutions today.</h1>
-            <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed max-w-xl">We are a team of visionary technologists, engineers, and strategists dedicated to transforming complex challenges into elegant, robust digital ecosystems. With roots in Cameroon and a global perspective, we blend institutional stability with modern technical agility.</p>
+            <h1 className="font-headline-md text-headline-md md:font-display-lg-mobile md:text-display-lg-mobile text-primary-container leading-tight mb-5">
+              Design, media, tech, and growth support from one trusted partner.
+            </h1>
+            <p className="font-body-md text-body-md text-on-surface-variant leading-relaxed max-w-xl">
+              G-Tech is a creative and technical solutions company based in Yaoundé, Cameroon. We help businesses, brands, and individuals grow through graphic design, media production, professional ads campaigns, social media growth, software development, and reliable tech sales.
+            </p>
           </div>
-          <div className="aspect-[1.35] overflow-hidden rounded-lg soft-shadow">
-            <img className="w-full h-full object-cover" src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1200&q=85" alt="G-Tech team collaborating in a bright office" />
+          <div className="rounded-2xl bg-primary-container p-8 text-white soft-shadow relative overflow-hidden flex flex-col justify-between min-h-[260px]">
+            <div className="absolute inset-0 opacity-20 pointer-events-none" aria-hidden="true">
+              <div className="absolute -top-10 -right-10 w-48 h-48 rounded-full bg-teal blur-2xl" />
+              <div className="absolute bottom-0 left-0 w-60 h-60 rounded-full bg-coral blur-3xl" />
+            </div>
+            <div className="relative z-10">
+              <span className="font-label-md text-xs text-secondary-fixed uppercase tracking-wider font-bold">Our Philosophy</span>
+              <h3 className="font-headline-sm text-xl text-white mt-2 mb-3">Institutional Stability & Modern Agility</h3>
+              <p className="font-body-md text-sm text-white/80 leading-relaxed">
+                We combine structured engineering, creative visual storytelling, and reliable delivery to help you lead in the digital era.
+              </p>
+            </div>
+            <div className="relative z-10 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-secondary-fixed font-bold">
+              <span>Trustworthy</span>
+              <span>•</span>
+              <span>Innovative</span>
+              <span>•</span>
+              <span>Approachable</span>
+            </div>
           </div>
         </div>
       </section>
 
+      {/* Mission & Vision */}
       <section className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12 md:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter">
           <article className="relative overflow-hidden rounded-lg bg-white p-7 soft-shadow border border-surface-variant">
             <div className="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary-container mb-5" aria-hidden="true">✦</div>
             <h2 className="font-headline-sm text-headline-sm text-primary-container mb-3">Our Mission</h2>
-            <p className="font-body-md text-body-md text-on-surface-variant">To empower enterprises and communities globally by delivering scalable, secure, and innovative technology solutions that drive sustainable growth and operational excellence. We strive to be the trusted partner navigating the complexities of the digital age.</p>
+            <p className="font-body-md text-body-md text-on-surface-variant">
+              To help brands and businesses grow with practical, modern solutions that connect creativity, technology, and measurable results. We focus on work that is useful, visually strong, and built for real-world performance.
+            </p>
           </article>
           <article className="relative overflow-hidden rounded-lg bg-white p-7 soft-shadow border border-surface-variant">
             <div className="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-primary-container mb-5" aria-hidden="true">◎</div>
             <h2 className="font-headline-sm text-headline-sm text-primary-container mb-3">Our Vision</h2>
-            <p className="font-body-md text-body-md text-on-surface-variant">To be the leading architect of Africa&apos;s technological renaissance, recognized internationally for engineering brilliance, unwavering reliability, and a profound commitment to developing future-ready digital infrastructures.</p>
+            <p className="font-body-md text-body-md text-on-surface-variant">
+              To become the go-to creative and digital partner for businesses and creators across Cameroon and beyond, delivering quality, consistency, and results in every service we offer.
+            </p>
           </article>
         </div>
       </section>
 
+      {/* Story Timeline */}
       <section className="bg-surface-container-low py-16 md:py-20">
         <div className="max-w-3xl mx-auto px-margin-mobile md:px-margin-desktop">
           <div className="text-center mb-10">
             <h2 className="font-headline-md text-headline-md text-primary-container mb-3">Our Story</h2>
-            <p className="font-body-md text-body-md text-on-surface-variant">A journey of continuous evolution and steadfast commitment to excellence.</p>
+            <p className="font-body-md text-body-md text-on-surface-variant">A journey of continuous learning, creativity, and practical innovation.</p>
           </div>
           <div className="relative">
             <div className="absolute left-1/2 top-0 bottom-0 w-px bg-outline-variant -translate-x-1/2" aria-hidden="true" />
@@ -71,25 +107,51 @@ export default function About() {
         </div>
       </section>
 
+      {/* Leadership Section */}
       <section className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16 md:py-20">
-        <div className="text-center mb-10">
-          <h2 className="font-headline-md text-headline-md text-primary-container mb-3">Our Leadership Team</h2>
-          <p className="font-body-md text-body-md text-on-surface-variant">The minds architecting our vision and driving technical excellence.</p>
+        <div className="text-center mb-12">
+          <p className="font-label-md text-label-md text-teal font-bold uppercase tracking-widest mb-3">Leadership &amp; Team</p>
+          <h2 className="font-headline-md text-headline-md text-primary-container mb-3">Our Core Team</h2>
+          <p className="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto">
+            The minds architecting our vision, technical standards, and creative product experiences.
+          </p>
         </div>
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-5">
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-3xl mx-auto">
           {LEADERS.map((leader) => (
-            <article key={leader.name}>
-              <div className="aspect-[0.8] overflow-hidden rounded-lg bg-surface-container-low mb-3">
-                <img className="w-full h-full object-cover" src={leader.image} alt={leader.alt} loading="lazy" />
+            <article
+              key={leader.name}
+              className="group overflow-hidden rounded-2xl bg-white soft-shadow border border-surface-variant transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex flex-col"
+            >
+              <div className="aspect-[3/4] overflow-hidden bg-surface-container-low">
+                <img
+                  className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  src={leader.image}
+                  alt={`${leader.name}, ${leader.role}`}
+                  loading="lazy"
+                />
               </div>
-              <h3 className="font-headline-sm text-base text-primary-container">{leader.name}</h3>
-              <p className="font-label-md text-xs text-teal uppercase font-bold mt-1">{leader.role}</p>
+              <div className="p-6 text-center flex-grow flex flex-col justify-between">
+                <div>
+                  <h3 className="font-headline-sm text-xl text-primary-container font-bold">{leader.name}</h3>
+                  <p className="font-label-md text-sm text-teal uppercase font-bold tracking-wider mt-1">
+                    {leader.role}
+                  </p>
+                  <p className="font-body-md text-sm text-on-surface-variant mt-3 leading-relaxed">
+                    {leader.bio}
+                  </p>
+                </div>
+              </div>
             </article>
           ))}
         </div>
       </section>
 
-      <PageCta title="Ready to build the future?" body="Let's discuss how our engineering expertise can accelerate your digital transformation." actionLabel="Get a Quote" />
+      <PageCta
+        title="Ready to grow your brand or business?"
+        body="Let’s talk about the creative, digital, and technical support that will help you move forward with confidence."
+        actionLabel="Get a Quote"
+      />
     </main>
   );
 }

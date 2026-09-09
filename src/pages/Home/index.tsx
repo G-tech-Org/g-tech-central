@@ -5,15 +5,21 @@ import { Button, Card, PageCta, ServiceIcon } from '@components/ui';
 import { SERVICES } from '@/data/services';
 
 const VALUES = [
-  { title: 'Strategy first', detail: 'Clear goals and a practical plan' },
-  { title: 'Built with care', detail: 'Work you can maintain' },
-  { title: 'Ready to grow', detail: 'Designed for the next stage' },
+  { title: 'Creative impact', detail: 'Brand visuals that make your message memorable' },
+  { title: 'Built to perform', detail: 'Digital systems, media, and tech that work reliably' },
+  { title: 'Growth-ready', detail: 'Strategy and execution for visibility, reach, and sales' },
 ];
 
 function accentIconClass(accent: (typeof SERVICES)[number]['accent']) {
   if (accent === 'coral') return 'group-hover:bg-coral';
   if (accent === 'navy') return 'group-hover:bg-primary-container';
   return 'group-hover:bg-teal';
+}
+
+function servicePillClass(accent: (typeof SERVICES)[number]['accent']) {
+  if (accent === 'coral') return 'bg-coral/15 text-coral';
+  if (accent === 'navy') return 'bg-primary-container/15 text-primary-container';
+  return 'bg-teal/15 text-teal';
 }
 
 export default function Home() {
@@ -28,11 +34,11 @@ export default function Home() {
               Yaoundé, Cameroon
             </p>
             <h1 className="font-display-lg-mobile text-display-lg-mobile md:font-display-lg md:text-display-lg text-primary-container leading-tight">
-              Reliable technology <br />
-              <span className="text-teal">for ambitious teams</span>
+              Design, media, and tech <br />
+              <span className="text-teal">that move your brand forward</span>
             </h1>
             <p className="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
-              We help Cameroonian and international organizations ship websites, apps, brand systems, and the hardware to run them.
+              We help businesses, startups, and creators grow through standout branding, strategic marketing, software development, networking, and reliable gadgets that support real-world operations.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
               <Button type="button" variant="primary" size="md" onClick={() => dispatch(openQuoteModal())}>
@@ -52,16 +58,24 @@ export default function Home() {
             </div>
             <div className="relative">
               <p className="font-label-md text-label-md text-secondary-fixed font-bold uppercase tracking-widest mb-3">
-                What we deliver
+                Everything under one roof
               </p>
               <p className="font-headline-sm text-headline-sm max-w-md">
-                Practical digital work for teams that need to look credible and keep moving.
+                Creative execution, digital systems, and growth support designed to help your business look sharper and perform better.
               </p>
             </div>
             <ul className="relative grid grid-cols-1 sm:grid-cols-2 gap-3">
               {SERVICES.map((service) => (
-                <li key={service.id} className="glass-panel rounded-lg px-4 py-3 text-primary-container">
-                  <p className="font-label-md text-label-md font-bold">{service.title}</p>
+                <li
+                  key={service.id}
+                  className="group rounded-xl border border-white/15 bg-white/5 p-3 text-primary-container shadow-[0_12px_30px_rgba(17,24,39,0.08)] transition-all duration-200 hover:border-white/30 hover:bg-white/10"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className={`flex h-10 w-10 items-center justify-center rounded-lg ${servicePillClass(service.accent)}`}>
+                      <ServiceIcon name={service.id} className="h-4 w-4" />
+                    </div>
+                    <p className="font-label-md text-label-md font-bold leading-tight text-white/95">{service.title}</p>
+                  </div>
                 </li>
               ))}
             </ul>
@@ -86,10 +100,10 @@ export default function Home() {
         <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
           <div className="text-center mb-16 max-w-2xl mx-auto">
             <h2 className="font-headline-md text-headline-md md:font-display-lg-mobile md:text-display-lg-mobile text-primary-container mb-4">
-              What we can take on
+              Built for the full brand journey
             </h2>
             <p className="font-body-lg text-body-lg text-on-surface-variant">
-              Four focused offers, from first digital presence to the equipment your people use every day.
+              From visual identity and content production to software, networking, and gadget sales, we support the full path from visibility to conversion and growth.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
@@ -118,10 +132,10 @@ export default function Home() {
         <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop">
           <div className="max-w-2xl mb-12">
             <h2 className="font-headline-md text-headline-md md:font-display-lg-mobile md:text-display-lg-mobile text-primary-container mb-4">
-              A clearer path from idea to impact
+              From idea to execution
             </h2>
             <p className="font-body-lg text-body-lg text-on-surface-variant">
-              Every engagement is shaped around your goals, your constraints, and the people who will rely on the result.
+              Every engagement is shaped around your goals, audience, and the day-to-day reality of how your business actually works.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
@@ -151,8 +165,8 @@ export default function Home() {
       </section>
 
       <PageCta
-        title="Tell us what you are building"
-        body="Share the problem, the audience, and the timeline. We will help you find a practical next step."
+        title="Tell us what you need to launch or improve"
+        body="Share your vision, your audience, and your goals. We will help you choose the right mix of creative and technical support."
       />
     </div>
   );

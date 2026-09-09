@@ -26,6 +26,7 @@
       "@hooks/*": ["src/hooks/*"],
       "@store/*": ["src/store/*"],
       "@api/*": ["src/api/*"],
+      "@data/*": ["src/data/*"],
       "@utils/*": ["src/utils/*"],
       "@app-types/*": ["src/types/*"],
       "@assets/*": ["src/assets/*"],
