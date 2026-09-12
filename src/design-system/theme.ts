@@ -8,7 +8,6 @@ export const theme = {
   typography,
   spacing,
   borderRadius,
-  colorMode: 'light' as 'light' | 'dark',
 } as const;
 
 export type Theme = typeof theme;

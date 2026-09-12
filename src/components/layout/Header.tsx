@@ -1,9 +1,8 @@
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import useAppDispatch from '@hooks/useAppDispatch';
-import { openQuoteModal, toggleDarkMode } from '@store/uiSlice';
+import { openQuoteModal } from '@store/uiSlice';
 import { Button } from '@components/ui';
-import useAppSelector from '@hooks/useAppSelector';
 import { NAV_LINKS } from '@/data/nav';
 
 function navClassName({ isActive }: { isActive: boolean }) {
@@ -17,33 +16,11 @@ function navClassName({ isActive }: { isActive: boolean }) {
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const dispatch = useAppDispatch();
-  const darkMode = useAppSelector((state) => state.ui.darkMode);
 
   const handleOpenQuote = () => {
     dispatch(openQuoteModal());
     setMenuOpen(false);
   };
-
-  const themeToggle = (
-    <button
-      type="button"
-      aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-      aria-pressed={darkMode}
-      onClick={() => dispatch(toggleDarkMode())}
-      className="inline-flex h-10 w-10 items-center justify-center rounded-lg text-on-primary hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary-fixed"
-    >
-      {darkMode ? (
-        <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-          <circle cx="12" cy="12" r="4" />
-          <path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42" strokeLinecap="round" />
-        </svg>
-      ) : (
-        <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-          <path d="M20.5 15.5A8.5 8.5 0 0 1 8.5 3.5 8.5 8.5 0 1 0 20.5 15.5Z" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      )}
-    </button>
-  );
 
   return (
     <header className="bg-primary sticky top-0 w-full z-50 shadow-sm">
@@ -58,10 +35,9 @@ export default function Header() {
             </NavLink>
           ))}
         </div>
-        <div className="hidden md:flex items-center gap-2">
-          {themeToggle}
-          <Button type="button" variant="primary" size="sm" onClick={handleOpenQuote}>Get a Quote</Button>
-        </div>
+        <Button type="button" variant="primary" size="sm" className="hidden md:inline-flex" onClick={handleOpenQuote}>
+          Get a Quote
+        </Button>
         <button
           type="button"
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
@@ -99,7 +75,6 @@ export default function Header() {
           <Button type="button" variant="primary" className="mt-3 w-full" onClick={handleOpenQuote}>
             Get a Quote
           </Button>
-          <div className="mt-2 flex justify-center">{themeToggle}</div>
         </div>
       )}
     </header>

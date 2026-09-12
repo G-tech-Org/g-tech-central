@@ -1,13 +1,11 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
 interface UIState {
-  darkMode: boolean;
   isQuoteModalOpen: boolean;
   selectedQuoteService: string | null;
 }
 
 const initialState: UIState = {
-  darkMode: false,
   isQuoteModalOpen: false,
   selectedQuoteService: null,
 };
@@ -16,12 +14,6 @@ const uiSlice = createSlice({
   name: 'ui',
   initialState,
   reducers: {
-    toggleDarkMode(state) {
-      state.darkMode = !state.darkMode;
-    },
-    setDarkMode(state, action: PayloadAction<boolean>) {
-      state.darkMode = action.payload;
-    },
     openQuoteModal(state, action: PayloadAction<string | undefined>) {
       state.isQuoteModalOpen = true;
       state.selectedQuoteService = action.payload ?? null;
@@ -40,8 +32,6 @@ const uiSlice = createSlice({
 });
 
 export const {
-  toggleDarkMode,
-  setDarkMode,
   openQuoteModal,
   selectQuoteService,
   closeQuoteModal,

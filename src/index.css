@@ -78,24 +78,6 @@
 }
 
 @layer base {
-  html.dark {
-    --color-background: #0f1620;
-    --color-on-background: #e6f0ff;
-    --color-surface: #0f1620;
-    --color-on-surface: #e6f0ff;
-    --color-surface-variant: #344052;
-    --color-on-surface-variant: #c2ccdc;
-    --color-surface-container-lowest: #17212d;
-    --color-surface-container-low: #1b2735;
-    --color-surface-container: #202f40;
-    --color-surface-container-high: #2a394b;
-    --color-surface-container-highest: #344052;
-    --color-surface-dim: #0b1118;
-    --color-surface-bright: #253141;
-    --color-outline: #8996aa;
-    --color-outline-variant: #4a586b;
-  }
-
   html {
     scroll-padding-top: 5.5rem;
   }
@@ -118,17 +100,6 @@
     flex-direction: column;
   }
 
-  html.dark .bg-white {
-    background-color: var(--color-surface-container-lowest);
-  }
-
-  html.dark .text-primary-container {
-    color: var(--color-on-background);
-  }
-
-  html.dark .text-on-surface-variant {
-    color: var(--color-on-surface-variant);
-  }
 }
 
 .font-body-lg { font-size: 18px; line-height: 28px; font-weight: 400; }
