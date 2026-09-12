@@ -1,6 +1,29 @@
 // ─── API Base Configuration ────────────────────────────────────────────────────
 
 const BASE_URL = import.meta.env.VITE_API_BASE_URL ?? 'https://api.g-tech.cm';
+const WEB3FORMS_URL = 'https://api.web3forms.com/submit';
+
+export async function submitWeb3Form<T extends Record<string, unknown>>(data: T) {
+  const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+
+  if (!accessKey) {
+    throw new Error('Form submission is not configured. Please contact us by email.');
+  }
+
+  const response = await fetch(WEB3FORMS_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    },
+    body: JSON.stringify({ access_key: accessKey, ...data }),
+  });
+  const result = (await response.json()) as { success?: boolean; message?: string };
+
+  if (!response.ok || !result.success) {
+    throw new Error(result.message || 'Unable to submit the form.');
+  }
+}
 
 async function request<T>(
   endpoint: string,

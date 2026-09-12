@@ -3,6 +3,7 @@ import { Input, Button, Textarea } from '@components/ui';
 import useAppDispatch from '@hooks/useAppDispatch';
 import { openQuoteModal } from '@store/uiSlice';
 import type { ContactFormData } from '@app-types/index';
+import { submitWeb3Form } from '@api/index';
 
 export default function Contact() {
   const dispatch = useAppDispatch();
@@ -14,15 +15,31 @@ export default function Contact() {
     message: '',
   });
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }
 
-  function handleSubmit(e: FormEvent) {
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    console.log('Contact form submitted:', form);
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setSubmitError('');
+
+    try {
+      await submitWeb3Form({
+        from_name: 'G-Tech website contact form',
+        ...form,
+        subject: `New contact message from ${form.name}`,
+        message: `${form.subject}\n\n${form.message}`,
+      });
+      setSubmitted(true);
+    } catch (error) {
+      setSubmitError(error instanceof Error ? error.message : 'Unable to send your message.');
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
   return (
@@ -70,6 +87,11 @@ export default function Contact() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+              {submitError && (
+                <p className="rounded-lg bg-coral/10 px-4 py-3 text-sm text-coral" role="alert">
+                  {submitError}
+                </p>
+              )}
               <Input
                 id="name"
                 name="name"
@@ -116,8 +138,8 @@ export default function Contact() {
                 onChange={handleChange}
                 required
               />
-              <Button type="submit" variant="primary" size="lg" className="mt-2 w-full">
-                Send message
+              <Button type="submit" variant="primary" size="lg" className="mt-2 w-full" disabled={isSubmitting}>
+                {isSubmitting ? 'Sending...' : 'Send message'}
               </Button>
             </form>
           )}

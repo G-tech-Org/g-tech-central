@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type FormEvent } from 'react';
+import { useCallback, useEffect, useRef, useState, type FormEvent } from 'react';
 import useAppDispatch from '@hooks/useAppDispatch';
 import useAppSelector from '@hooks/useAppSelector';
 import { closeQuoteModal, selectQuoteService } from '@store/uiSlice';
@@ -6,6 +6,7 @@ import { SERVICES } from '@/data/services';
 import Button from './Button';
 import Input from './Input';
 import Textarea from './Textarea';
+import { submitWeb3Form } from '@api/index';
 
 const BUDGETS = [
   { value: 'under-500k', label: 'Under 500,000 XAF' },
@@ -20,6 +21,7 @@ export default function QuoteModal() {
   const isOpen = useAppSelector((state) => state.ui.isQuoteModalOpen);
   const selectedQuoteService = useAppSelector((state) => state.ui.selectedQuoteService);
   const panelRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLElement | null>(null);
 
   const service = selectedQuoteService ?? SERVICES[0].id;
   const [budget, setBudget] = useState('discuss');
@@ -33,20 +35,41 @@ export default function QuoteModal() {
     details: '',
   });
 
-  function handleClose() {
+  const handleClose = useCallback(() => {
     dispatch(closeQuoteModal());
     setSubmitted(false);
     setIsSubmitting(false);
     setSubmitError('');
-  }
+    setBudget('discuss');
+    setFormData({ name: '', email: '', phone: '', details: '' });
+    triggerRef.current?.focus();
+  }, [dispatch]);
 
   useEffect(() => {
     if (!isOpen) return;
 
+    triggerRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+
     const onKey = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
-        dispatch(closeQuoteModal());
-        setSubmitted(false);
+        handleClose();
+        return;
+      }
+
+      if (event.key !== 'Tab' || !panelRef.current) return;
+      const focusable = Array.from(
+        panelRef.current.querySelectorAll<HTMLElement>('button, [href], input, select, textarea'),
+      ).filter((element) => !element.hasAttribute('disabled'));
+      if (!focusable.length) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
       }
     };
 
@@ -63,7 +86,7 @@ export default function QuoteModal() {
       document.removeEventListener('keydown', onKey);
       document.body.style.overflow = previousOverflow;
     };
-  }, [isOpen, dispatch]);
+  }, [isOpen, dispatch, handleClose]);
 
   if (!isOpen) return null;
 
@@ -73,28 +96,14 @@ export default function QuoteModal() {
     setSubmitError('');
 
     try {
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-        },
-        body: JSON.stringify({
-          access_key: '22fd5396-65b1-414a-afc5-22adb9419072',
-          subject: `New quote request from ${formData.name}`,
-          from_name: 'G-Tech website quote form',
-          ...formData,
-          service,
-          budget: BUDGETS.find((item) => item.value === budget)?.label ?? budget,
-          message: formData.details,
-        }),
+      await submitWeb3Form({
+        subject: `New quote request from ${formData.name}`,
+        from_name: 'G-Tech website quote form',
+        ...formData,
+        service,
+        budget: BUDGETS.find((item) => item.value === budget)?.label ?? budget,
+        message: formData.details,
       });
-      const result = (await response.json()) as { success?: boolean; message?: string };
-
-      if (!response.ok || !result.success) {
-        throw new Error(result.message || 'Unable to submit your quote request.');
-      }
-
       setSubmitted(true);
     } catch (error) {
       setSubmitError(error instanceof Error ? error.message : 'Unable to submit your quote request.');
