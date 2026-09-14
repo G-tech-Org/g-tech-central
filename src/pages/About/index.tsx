@@ -9,14 +9,14 @@ const MILESTONES = [
 
 const LEADERS = [
   {
-    name: 'Mbah Ajieh Gaston',
-    role: 'Founder & Chief Executive Officer',
+    name: 'Mbatifuh Gaston Ajeih',
+    role: 'Chief Executive Officer',
     image: '/team/mbah-ajieh-gaston-ceo.jpg',
     bio: 'Leading G-Tech with a commitment to technical precision, business innovation, and transformative digital solutions across Cameroon and globally.',
   },
   {
-    name: 'Abiola',
-    role: 'Lead, Product Design',
+    name: 'Abolaji Abiola',
+    role: 'Product Lead',
     image: '/team/abiola-lead-product-design.jpg',
     bio: 'Crafting intuitive user interfaces, standout visual experiences, and high-impact design architectures across all digital platforms.',
   },
