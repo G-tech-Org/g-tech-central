@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { PageCta } from '@components/ui';
 
-type Category = 'All' | 'Design' | 'Professional Ads Campaign' | 'Social Media Growth' | 'Media' | 'Development' | 'Tech';
+type Category = 'All' | 'Design' | 'Professional Ads Campaign' | 'Social Media Growth' | 'Media' | 'Development' | 'Tech' | 'Networking';
 
 type Project = {
   title: string;
   category: Exclude<Category, 'All'>;
   image: string;
   alt: string;
+  video?: string;
 };
 
 const PROJECTS: Project[] = [
@@ -43,9 +44,17 @@ const PROJECTS: Project[] = [
   },
   {
     title: 'Campus Network Upgrade',
-    category: 'Tech',
+    category: 'Networking',
     image: 'https://images.unsplash.com/photo-1516321165247-4aa89a48be28?auto=format&fit=crop&w=1200&q=85',
     alt: 'Networking equipment and computer workspace',
+    video: '/portfolio/networking/networking-installation-1.mp4',
+  },
+  {
+    title: 'Office Connectivity Installation',
+    category: 'Networking',
+    image: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=85',
+    alt: 'Network setup and connectivity installation video',
+    video: '/portfolio/networking/networking-installation-2.mp4',
   },
   {
     title: 'Product Launch Reel',
@@ -91,14 +100,14 @@ const PROJECTS: Project[] = [
   },
 ];
 
-const FILTERS: Category[] = ['All', 'Design', 'Professional Ads Campaign', 'Social Media Growth', 'Media', 'Development', 'Tech'];
+const FILTERS: Category[] = ['All', 'Design', 'Professional Ads Campaign', 'Social Media Growth', 'Media', 'Development', 'Tech', 'Networking'];
 
 export default function Portfolio() {
   const [activeFilter, setActiveFilter] = useState<Category>('All');
   const categoryCounts = FILTERS.reduce<Record<Category, number>>((acc, filter) => {
     acc[filter] = filter === 'All' ? PROJECTS.length : PROJECTS.filter((project) => project.category === filter).length;
     return acc;
-  }, { All: 0, Design: 0, 'Professional Ads Campaign': 0, 'Social Media Growth': 0, Media: 0, Development: 0, Tech: 0 });
+  }, { All: 0, Design: 0, 'Professional Ads Campaign': 0, 'Social Media Growth': 0, Media: 0, Development: 0, Tech: 0, Networking: 0 });
 
   const visibleProjects = activeFilter === 'All'
     ? PROJECTS
@@ -148,12 +157,23 @@ export default function Portfolio() {
           {visibleProjects.map((project) => (
             <article key={project.title} className="group overflow-hidden rounded-2xl bg-white soft-shadow transition-transform duration-300 hover:-translate-y-1">
               <div className="aspect-[1.35] overflow-hidden bg-surface-container-low">
-                <img
-                  src={project.image}
-                  alt={project.alt}
-                  loading="lazy"
-                  className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
+                {project.video ? (
+                  <video
+                    src={project.video}
+                    poster={project.image}
+                    controls
+                    playsInline
+                    preload="metadata"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                ) : (
+                  <img
+                    src={project.image}
+                    alt={project.alt}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                )}
               </div>
               <div className="flex items-center justify-between gap-4 px-5 py-4">
                 <h2 className="font-headline-sm text-lg text-primary-container">{project.title}</h2>
