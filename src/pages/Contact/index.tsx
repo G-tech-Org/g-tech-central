@@ -47,8 +47,8 @@ export default function Contact() {
       <section className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-16 md:py-24">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
           <div>
-            <p className="font-label-md text-label-md text-teal font-bold uppercase tracking-widest mb-4">Contact</p>
-            <h1 className="font-headline-md text-headline-md md:font-display-lg-mobile md:text-display-lg-mobile text-primary-container mb-4">
+            <p className="eyebrow mb-4">Contact</p>
+            <h1 className="font-headline-md text-headline-md md:font-display-lg-mobile md:text-display-lg-mobile text-on-background mb-5">
               Get in touch
             </h1>
             <p className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-8">
@@ -56,19 +56,9 @@ export default function Contact() {
             </p>
             <div className="flex flex-col gap-4 text-on-surface-variant mb-8">
               <a href="mailto:g.technologies237@gmail.com" className="inline-flex items-center gap-3 hover:text-teal transition-colors">
-                <svg viewBox="0 0 24 24" className="w-5 h-5 text-teal shrink-0" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-                  <rect x="3" y="5" width="18" height="14" rx="2" />
-                  <path d="M3 7l9 7 9-7" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
                 g.technologies237@gmail.com
               </a>
-              <p className="inline-flex items-center gap-3">
-                <svg viewBox="0 0 24 24" className="w-5 h-5 text-teal shrink-0" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-                  <path d="M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11z" />
-                  <circle cx="12" cy="10" r="2.5" />
-                </svg>
-                Bamenda, Cameroon
-              </p>
+              <p>Bamenda, Cameroon</p>
             </div>
             <Button type="button" variant="ghost" onClick={() => dispatch(openQuoteModal())}>
               Request a project quote
@@ -76,19 +66,19 @@ export default function Contact() {
           </div>
 
           {submitted ? (
-            <div className="flex flex-col items-center justify-center bg-teal/10 rounded-2xl p-12 text-center min-h-[320px]">
-              <div className="w-14 h-14 rounded-full bg-teal/20 text-teal flex items-center justify-center mb-4">
+            <div className="flex flex-col items-center justify-center bg-surface-container-lowest border border-white/8 rounded-3xl p-12 text-center min-h-[320px]">
+              <div className="w-14 h-14 rounded-full bg-teal text-on-secondary flex items-center justify-center mb-4">
                 <svg viewBox="0 0 24 24" className="w-7 h-7" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
                   <path d="M5 12l5 5L20 7" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </div>
-              <h2 className="font-headline-sm text-headline-sm text-primary-container">Message sent</h2>
+              <h2 className="font-headline-sm text-headline-sm text-on-background">Message sent</h2>
               <p className="font-body-md text-body-md text-on-surface-variant mt-2">We will be in touch soon.</p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-5 rounded-3xl border border-white/8 bg-surface-container-lowest p-6 md:p-8">
               {submitError && (
-                <p className="rounded-lg bg-coral/10 px-4 py-3 text-sm text-coral" role="alert">
+                <p className="rounded-xl bg-error-container px-4 py-3 text-sm text-on-error-container" role="alert">
                   {submitError}
                 </p>
               )}

@@ -75,28 +75,22 @@ const PROJECTS: Project[] = [
     alt: 'Social media engagement and analytics workspace',
   },
   {
-    title: 'SaaS Landing Page',
+    title: 'Clean City v1.1 — Splash & Welcome',
     category: 'Development',
-    image: 'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=1200&q=85',
-    alt: 'Modern website interface on laptop screen',
+    image: '/portfolio/clean-city/clean-city-splash.jpg',
+    alt: 'Clean City mobile app splash and welcome screen',
   },
   {
-    title: 'Flutter Booking App',
+    title: 'Clean City v1.1 — Citizen Dashboard',
     category: 'Development',
-    image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?auto=format&fit=crop&w=1200&q=85',
-    alt: 'Mobile app interface on a smartphone',
+    image: '/portfolio/clean-city/clean-city-dashboard.jpg',
+    alt: 'Clean City citizen dashboard showing report activity',
   },
   {
-    title: 'Inventory API Platform',
+    title: 'Clean City v1.1 — Waste Reporting Flow',
     category: 'Development',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=85',
-    alt: 'Data dashboards and system monitoring interfaces',
-  },
-  {
-    title: 'Laptop & Gadget Storefront',
-    category: 'Tech',
-    image: 'https://images.unsplash.com/photo-1541807084-5c52b6b3adef?auto=format&fit=crop&w=1200&q=85',
-    alt: 'Laptop and gadget display on a clean desk',
+    image: '/portfolio/clean-city/clean-city-reports.jpg',
+    alt: 'Clean City waste reporting and community reports interface',
   },
 ];
 
@@ -115,15 +109,15 @@ export default function Portfolio() {
 
   return (
     <main className="bg-surface min-h-screen">
-      <section className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-16 md:pt-20 pb-12 text-center">
-        <p className="font-label-md text-label-md text-teal font-bold uppercase tracking-widest mb-4">Selected work</p>
-        <h1 className="font-headline-md text-headline-md md:font-display-lg-mobile md:text-display-lg-mobile text-primary-container mb-4">
+      <section className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pt-16 md:pt-24 pb-12">
+        <p className="eyebrow mb-4">Selected work</p>
+        <h1 className="font-headline-md text-headline-md md:font-display-lg-mobile md:text-display-lg-mobile text-on-background mb-5 max-w-3xl">
           Portfolio of growth-focused work
         </h1>
-        <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+        <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
           A look at our branding, media, digital, and technical work designed to help businesses look stronger and perform better.
         </p>
-        <div className="flex flex-wrap justify-center gap-3 mt-10" role="group" aria-label="Filter projects">
+        <div className="flex flex-wrap gap-2 mt-10" role="group" aria-label="Filter projects">
           {FILTERS.map((filter) => {
             const isActive = activeFilter === filter;
             return (
@@ -132,16 +126,16 @@ export default function Portfolio() {
                 type="button"
                 aria-pressed={isActive}
                 onClick={() => setActiveFilter(filter)}
-                className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 font-label-md text-label-md transition-all duration-200 ${
+                className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 font-label-md text-label-md uppercase tracking-[0.08em] transition-all duration-200 ${
                   isActive
-                    ? 'border-primary-container bg-primary-container text-white shadow-[0_10px_25px_rgba(19,44,56,0.18)]'
-                    : 'border-outline-variant bg-white text-primary-container hover:border-teal hover:text-teal hover:shadow-[0_8px_18px_rgba(22,162,149,0.12)]'
+                    ? 'border-teal bg-teal text-on-secondary'
+                    : 'border-white/10 bg-transparent text-on-surface-variant hover:border-teal hover:text-teal'
                 }`}
               >
                 <span>{filter}</span>
                 <span
                   className={`inline-flex min-w-6 items-center justify-center rounded-full px-1.5 py-0.5 text-[11px] font-bold ${
-                    isActive ? 'bg-white/15 text-white' : 'bg-surface-container-low text-on-surface-variant'
+                    isActive ? 'bg-black/10 text-on-secondary' : 'bg-white/5 text-on-surface-variant'
                   }`}
                 >
                   {categoryCounts[filter]}
@@ -153,10 +147,10 @@ export default function Portfolio() {
       </section>
 
       <section className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop pb-20" aria-live="polite">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
           {visibleProjects.map((project) => (
-            <article key={project.title} className="group overflow-hidden rounded-2xl bg-white soft-shadow transition-transform duration-300 hover:-translate-y-1">
-              <div className="aspect-[1.35] overflow-hidden bg-surface-container-low">
+            <article key={project.title} className="group overflow-hidden rounded-3xl bg-surface-container-lowest border border-white/8">
+              <div className="aspect-[1.35] overflow-hidden bg-surface-container">
                 {project.video ? (
                   <video
                     src={project.video}
@@ -164,7 +158,9 @@ export default function Portfolio() {
                     controls
                     playsInline
                     preload="metadata"
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    className={`h-full w-full transition-transform duration-500 group-hover:scale-105 ${
+                      project.title.startsWith('Clean City') ? 'object-contain p-2' : 'object-cover'
+                    }`}
                   />
                 ) : (
                   <img
@@ -175,9 +171,9 @@ export default function Portfolio() {
                   />
                 )}
               </div>
-              <div className="flex items-center justify-between gap-4 px-5 py-4">
-                <h2 className="font-headline-sm text-lg text-primary-container">{project.title}</h2>
-                <span className="rounded-full border border-teal/30 bg-teal/10 px-2.5 py-1 font-label-md text-[11px] uppercase tracking-wider text-teal">
+              <div className="flex items-start justify-between gap-4 px-5 py-4">
+                <h2 className="font-headline-sm text-lg text-on-background">{project.title}</h2>
+                <span className="shrink-0 rounded-full border border-teal/30 px-2.5 py-1 font-label-md text-[10px] uppercase tracking-wider text-teal">
                   {project.category}
                 </span>
               </div>

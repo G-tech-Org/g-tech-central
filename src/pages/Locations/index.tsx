@@ -36,11 +36,11 @@ const LOCATIONS: LocationInfo[] = [
 
 function LocationMap({ location }: { location: LocationInfo }) {
   return (
-    <div className="relative h-64 w-full overflow-hidden bg-surface-container-low">
+    <div className="relative h-64 w-full overflow-hidden bg-surface-container">
       <iframe
         title={`Map location for ${location.name}`}
         src={location.embedUrl}
-        className="w-full h-full border-0 grayscale-[20%] contrast-[105%] hover:grayscale-0 transition-all duration-300"
+        className="w-full h-full border-0 grayscale contrast-[110%] hover:grayscale-0 transition-all duration-300"
         loading="lazy"
         allowFullScreen
       />
@@ -50,21 +50,21 @@ function LocationMap({ location }: { location: LocationInfo }) {
 
 export default function Locations() {
   return (
-    <main className="bg-surface min-h-screen pt-12">
+    <main className="bg-surface min-h-screen">
       <div className="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-section-padding">
         <header className="mb-12 grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
           <div>
-            <p className="font-label-md text-label-md text-teal font-bold uppercase tracking-widest mb-4">Visit G-Tech</p>
-          <h1 className="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-primary-container mb-4">
-            Our Locations
-          </h1>
-          <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
-            Meet our team in Bambili or Bamenda to discuss design, media, software, and technology solutions for your next project.
-          </p>
+            <p className="eyebrow mb-4">Visit G-Tech</p>
+            <h1 className="font-display-lg-mobile md:font-display-lg text-display-lg-mobile md:text-display-lg text-on-background mb-4">
+              Our Locations
+            </h1>
+            <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+              Meet our team in Bambili or Bamenda to discuss design, media, software, and technology solutions for your next project.
+            </p>
           </div>
-          <div className="rounded-lg border border-outline-variant/50 bg-white px-5 py-4 md:max-w-xs">
-            <p className="font-label-md text-label-md text-primary-container font-bold">Planning a visit?</p>
-            <p className="font-body-md text-body-md text-on-surface-variant mt-1">Send us a message first so we can prepare the right person to meet you.</p>
+          <div className="rounded-3xl border border-white/8 bg-surface-container-lowest px-5 py-4 md:max-w-xs">
+            <p className="font-label-md text-teal uppercase">Planning a visit?</p>
+            <p className="font-body-md text-body-md text-on-surface-variant mt-2">Send us a message first so we can prepare the right person to meet you.</p>
           </div>
         </header>
 
@@ -72,44 +72,36 @@ export default function Locations() {
           {LOCATIONS.map((location) => (
             <article
               key={location.name}
-              className="bg-white rounded-[16px] soft-shadow overflow-hidden hover:-translate-y-1 transition-all duration-300 border-b-2 border-transparent hover:border-teal flex flex-col"
+              className="bg-surface-container-lowest rounded-3xl overflow-hidden border border-white/8 flex flex-col"
             >
               <LocationMap location={location} />
 
               <div className="p-6 flex-grow flex flex-col justify-between">
                 <div>
-                  <h2 className="font-headline-sm text-headline-sm text-primary-container mb-4 flex items-center gap-2">
-                    <span className="flex h-8 w-8 items-center justify-center rounded-full bg-teal/15 text-teal" aria-hidden="true">⌖</span>
+                  <h2 className="font-headline-sm text-headline-sm text-on-background mb-4">
                     {location.name}
                   </h2>
                   <div className="space-y-4 mb-6 text-on-surface-variant">
-                    <div className="flex items-start gap-3">
-                      <span className="mt-1 text-teal" aria-hidden="true">+</span>
-                      <address className="font-body-md text-body-md not-italic">
-                        {location.street}<br />
-                        {location.city}, {location.region}
-                      </address>
+                    <address className="font-body-md text-body-md not-italic">
+                      {location.street}<br />
+                      {location.city}, {location.region}
+                    </address>
+                    <div>
+                      <p className="font-body-md text-body-md font-semibold text-on-background">{location.hours.days}</p>
+                      <p className="font-body-md text-body-md">{location.hours.time}</p>
                     </div>
-                    <div className="flex items-start gap-3">
-                      <span className="mt-1 text-teal" aria-hidden="true">◷</span>
-                      <div>
-                        <p className="font-body-md text-body-md font-semibold">{location.hours.days}</p>
-                        <p className="font-body-md text-body-md">{location.hours.time}</p>
-                      </div>
-                    </div>
-                    <p className="inline-flex items-center gap-2 rounded-full bg-teal/10 px-3 py-1.5 font-label-md text-label-md text-secondary">
-                      <span className="h-2 w-2 rounded-full bg-teal" aria-hidden="true" />
+                    <p className="inline-flex items-center gap-2 rounded-full border border-teal/30 px-3 py-1.5 font-label-md text-label-md text-teal uppercase">
+                      <span className="h-1.5 w-1.5 rounded-full bg-teal" aria-hidden="true" />
                       Visits by appointment recommended
                     </p>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  <a href={location.mapUrl} target="_blank" rel="noreferrer" aria-label={`Get directions to ${location.name}`} className="w-full bg-teal hover:bg-secondary text-white font-label-md text-label-md py-3 px-4 rounded-[8px] transition-colors duration-200 flex items-center justify-center gap-2 font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2">
-                    <span aria-hidden="true">↗</span>
+                  <a href={location.mapUrl} target="_blank" rel="noreferrer" aria-label={`Get directions to ${location.name}`} className="w-full bg-teal hover:brightness-110 text-on-secondary font-label-md text-label-md py-3 px-4 rounded-full transition-colors duration-200 flex items-center justify-center gap-2 font-bold uppercase tracking-[0.08em] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2 focus-visible:ring-offset-background">
                     Get directions
                   </a>
-                  <a href="mailto:g.technologies237@gmail.com" className="w-full border-2 border-teal text-primary-container hover:bg-teal hover:text-white font-label-md text-label-md py-3 px-4 rounded-[8px] transition-colors duration-200 flex items-center justify-center gap-2 font-bold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2">
+                  <a href="mailto:g.technologies237@gmail.com" className="w-full border border-white/15 text-on-background hover:border-teal hover:text-teal font-label-md text-label-md py-3 px-4 rounded-full transition-colors duration-200 flex items-center justify-center gap-2 font-bold uppercase tracking-[0.08em] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2 focus-visible:ring-offset-background">
                     Email the team
                   </a>
                 </div>

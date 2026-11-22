@@ -1,74 +1,66 @@
 // ─── G-Tech Design System Tokens ──────────────────────────────────────────────
-// Sourced from the Stitch project: "G-Tech Digital Studio Platform"
+// Version 1.1 — dark editorial studio
 
 export const colors = {
-  // Primary – Deep Navy
-  primary: '#00081e',
-  primaryContainer: '#0a1f44',
-  onPrimary: '#ffffff',
-  onPrimaryContainer: '#7687b2',
-  inversePrimary: '#b4c6f4',
+  primary: '#08080a',
+  primaryContainer: '#101014',
+  onPrimary: '#f3f0e8',
+  onPrimaryContainer: '#7fc6a4',
+  inversePrimary: '#7fc6a4',
 
-  // Secondary – Teal
-  secondary: '#006b5c',
-  secondaryContainer: '#65fade',
-  onSecondary: '#ffffff',
-  onSecondaryContainer: '#007262',
+  secondary: '#7fc6a4',
+  secondaryContainer: '#7fc6a4',
+  onSecondary: '#0d1712',
+  onSecondaryContainer: '#0d1712',
 
-  // Tertiary – Coral
-  tertiary: '#1c0100',
-  tertiaryContainer: '#460800',
-  onTertiary: '#ffffff',
-  onTertiaryContainer: '#e75a3a',
+  tertiary: '#f3f0e8',
+  tertiaryContainer: '#1a1a1f',
+  onTertiary: '#08080a',
+  onTertiaryContainer: '#f3f0e8',
 
-  // Surface
-  surface: '#f8f9ff',
-  surfaceDim: '#cedbf0',
-  surfaceBright: '#f8f9ff',
-  surfaceContainerLowest: '#ffffff',
-  surfaceContainerLow: '#eff4ff',
-  surfaceContainer: '#e6eeff',
-  surfaceContainerHigh: '#dce9ff',
-  surfaceContainerHighest: '#d7e3f9',
-  onSurface: '#101c2c',
-  onSurfaceVariant: '#44464e',
+  surface: '#08080a',
+  surfaceDim: '#050506',
+  surfaceBright: '#1a1a1f',
+  surfaceContainerLowest: '#101014',
+  surfaceContainerLow: '#141418',
+  surfaceContainer: '#1a1a1f',
+  surfaceContainerHigh: '#222228',
+  surfaceContainerHighest: '#2c2c34',
+  onSurface: '#f3f0e8',
+  onSurfaceVariant: '#a8a29c',
 
-  // Background
-  background: '#f8f9ff',
-  onBackground: '#101c2c',
+  background: '#08080a',
+  onBackground: '#f3f0e8',
 
-  // Outline
-  outline: '#75777f',
-  outlineVariant: '#c5c6cf',
+  outline: '#3f3f46',
+  outlineVariant: '#27272a',
 
-  // Error
-  error: '#ba1a1a',
-  errorContainer: '#ffdad6',
-  onError: '#ffffff',
-  onErrorContainer: '#93000a',
+  error: '#ff6b6b',
+  errorContainer: '#3a1212',
+  onError: '#1a0606',
+  onErrorContainer: '#ffb4b4',
 
-  // Brand accent overrides
   accent: {
-    coral: '#ff6b4a',   // CTAs / "Get a Quote"
-    teal: '#00c2a8',    // Secondary actions, links
-    navy: '#0a1f44',    // Navigation background, footer
+    coral: '#7fc6a4',
+    teal: '#7fc6a4',
+    navy: '#101014',
   },
 } as const;
 
 export const typography = {
   fontFamily: {
-    headline: 'Inter',
-    body: 'Inter',
-    label: 'Inter',
+    headline: 'Instrument Serif',
+    body: 'Outfit',
+    label: 'Outfit',
   },
   fontSize: {
-    displayLg: '48px',
-    displayLgMobile: '36px',
-    headlineMd: '32px',
+    displayLg: '72px',
+    displayLgMobile: '42px',
+    headlineMd: '40px',
     headlineSm: '24px',
     bodyLg: '18px',
     bodyMd: '16px',
-    labelMd: '14px',
+    labelMd: '12px',
   },
   fontWeight: {
     regular: '400',
@@ -77,36 +69,36 @@ export const typography = {
     extraBold: '800',
   },
   lineHeight: {
-    displayLg: '56px',
-    headlineMd: '40px',
+    displayLg: '76px',
+    headlineMd: '46px',
     headlineSm: '32px',
     bodyLg: '28px',
     bodyMd: '24px',
-    labelMd: '20px',
+    labelMd: '16px',
   },
   letterSpacing: {
-    tight: '-0.02em',
+    tight: '-0.04em',
     normal: '0',
-    wide: '0.05em',
+    wide: '0.16em',
   },
 } as const;
 
 export const spacing = {
   containerMax: '1280px',
   gutter: '24px',
-  marginMobile: '16px',
+  marginMobile: '20px',
   marginDesktop: '48px',
   stackSm: '8px',
   stackMd: '16px',
   stackLg: '32px',
-  sectionPadding: '80px',
+  sectionPadding: '96px',
 } as const;
 
 export const borderRadius = {
-  sm: '0.25rem',   // 4px
-  DEFAULT: '0.5rem', // 8px
-  md: '0.75rem',   // 12px
-  lg: '1rem',      // 16px
-  xl: '1.5rem',    // 24px
+  sm: '0.25rem',
+  DEFAULT: '0.5rem',
+  md: '0.75rem',
+  lg: '1rem',
+  xl: '1.5rem',
   full: '9999px',
 } as const;

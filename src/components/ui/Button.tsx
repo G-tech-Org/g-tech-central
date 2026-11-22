@@ -18,10 +18,10 @@ export default function Button({
   ...props
 }: ButtonProps) {
   const classes = cn(
-    'inline-flex items-center justify-center gap-2 font-semibold rounded-lg transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed',
-    variant === 'primary' && 'bg-coral text-white hover:bg-opacity-90 focus-visible:ring-coral',
-    variant === 'secondary' && 'bg-teal text-white hover:bg-opacity-90 focus-visible:ring-teal',
-    variant === 'ghost' && 'border-2 border-teal text-primary-container hover:bg-teal hover:text-white focus-visible:ring-teal',
+    'inline-flex items-center justify-center gap-2 font-semibold rounded-full transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:opacity-50 disabled:cursor-not-allowed',
+    variant === 'primary' && 'bg-coral text-on-secondary hover:brightness-110 focus-visible:ring-coral',
+    variant === 'secondary' && 'bg-on-background text-background hover:bg-white focus-visible:ring-on-background',
+    variant === 'ghost' && 'border border-white/15 text-on-background hover:border-teal hover:text-teal focus-visible:ring-teal',
     size === 'sm' && 'px-4 py-2 text-sm',
     size === 'md' && 'px-6 py-3 text-base',
     size === 'lg' && 'px-8 py-4 text-lg',

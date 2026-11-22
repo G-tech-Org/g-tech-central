@@ -13,18 +13,24 @@ export default function PageCta({ title, body, actionLabel = 'Get a Quote', acti
   const dispatch = useAppDispatch();
 
   return (
-    <section className="bg-primary-container text-white text-center px-margin-mobile md:px-margin-desktop py-16 md:py-20">
-      <h2 className="font-headline-md text-headline-md mb-4">{title}</h2>
-      <p className="font-body-md text-body-md text-white/80 max-w-xl mx-auto mb-8">{body}</p>
-      {actionHref ? (
-        <Button to={actionHref} variant="primary" size="md">
-          {actionLabel}
-        </Button>
-      ) : (
-        <Button type="button" variant="primary" size="md" onClick={() => dispatch(openQuoteModal())}>
-          {actionLabel}
-        </Button>
-      )}
+    <section className="px-margin-mobile md:px-margin-desktop py-16 md:py-20">
+      <div className="max-w-container-max mx-auto overflow-hidden rounded-[2rem] bg-coral text-on-secondary px-8 py-14 md:px-16 md:py-20 text-center relative">
+        <div className="absolute inset-0 grid-fade opacity-40" aria-hidden="true" />
+        <div className="relative">
+          <p className="font-label-md uppercase tracking-[0.16em] mb-4 opacity-70">Version 02</p>
+          <h2 className="font-headline-md text-headline-md md:font-display-lg-mobile md:text-display-lg-mobile mb-4">{title}</h2>
+          <p className="font-body-md text-body-md max-w-xl mx-auto mb-8 opacity-80">{body}</p>
+          {actionHref ? (
+            <Button to={actionHref} variant="secondary" size="md">
+              {actionLabel}
+            </Button>
+          ) : (
+            <Button type="button" variant="secondary" size="md" onClick={() => dispatch(openQuoteModal())}>
+              {actionLabel}
+            </Button>
+          )}
+        </div>
+      </div>
     </section>
   );
 }

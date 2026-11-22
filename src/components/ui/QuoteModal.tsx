@@ -123,22 +123,22 @@ export default function QuoteModal() {
         role="dialog"
         aria-modal="true"
         aria-labelledby="quote-modal-title"
-        className="bg-white w-full max-w-xl rounded-2xl shadow-2xl overflow-hidden border border-outline-variant/30 relative animate-scaleUp"
+        className="bg-surface-container-lowest w-full max-w-xl rounded-3xl shadow-2xl overflow-hidden border border-white/10 relative animate-scaleUp"
         onClick={(event) => event.stopPropagation()}
       >
-        <div className="bg-primary-container px-6 py-5 text-white flex items-center justify-between">
+        <div className="bg-surface-container px-6 py-5 text-on-background flex items-center justify-between border-b border-white/8">
           <div>
-            <h2 id="quote-modal-title" className="text-xl font-bold">
+            <h2 id="quote-modal-title" className="font-display text-2xl">
               Request a project quote
             </h2>
-            <p className="text-xs text-white/70 mt-0.5">
+            <p className="text-xs text-on-surface-variant mt-0.5">
               For a scoped estimate. General questions can go through Contact.
             </p>
           </div>
           <button
             type="button"
             onClick={handleClose}
-            className="text-white/70 hover:text-white text-2xl font-bold p-1 transition-colors"
+            className="text-on-surface-variant hover:text-on-background text-2xl font-bold p-1 transition-colors"
             aria-label="Close quote form"
           >
             ×
@@ -153,9 +153,9 @@ export default function QuoteModal() {
                   <path d="M5 12l5 5L20 7" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </div>
-              <h3 className="text-2xl font-bold text-primary-container">Quote request received</h3>
+              <h3 className="font-display text-3xl text-on-background">Quote request received</h3>
               <p className="text-on-surface-variant mt-2 max-w-md">
-                Thank you, <span className="font-semibold text-primary-container">{formData.name}</span>. We will review
+                Thank you, <span className="font-semibold text-on-background">{formData.name}</span>. We will review
                 this and reply by email.
               </p>
               <Button variant="primary" className="mt-6" onClick={handleClose}>
@@ -179,10 +179,10 @@ export default function QuoteModal() {
                       key={item.id}
                       type="button"
                       onClick={() => dispatch(selectQuoteService(item.id))}
-                      className={`p-3 rounded-lg border-2 text-xs font-bold text-left transition-all ${
+                      className={`p-3 rounded-xl border text-xs font-bold text-left transition-all ${
                         service === item.id
-                          ? 'border-teal bg-teal/10 text-secondary'
-                          : 'border-outline-variant/50 text-on-surface-variant hover:border-teal/50'
+                          ? 'border-teal bg-teal text-on-secondary'
+                          : 'border-white/10 text-on-surface-variant hover:border-teal/50'
                       }`}
                     >
                       {item.title}
@@ -227,7 +227,7 @@ export default function QuoteModal() {
                     id="quote-budget"
                     value={budget}
                     onChange={(e) => setBudget(e.target.value)}
-                    className="w-full px-4 py-3 rounded-lg border-2 border-outline-variant bg-white text-on-surface text-sm outline-none transition-all focus:border-teal"
+                    className="w-full px-4 py-3 rounded-xl border border-white/10 bg-surface-container-low text-on-surface text-sm outline-none transition-all focus:border-teal"
                   >
                     {BUDGETS.map((item) => (
                       <option key={item.value} value={item.value}>

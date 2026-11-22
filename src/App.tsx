@@ -7,7 +7,7 @@ import AppRoutes from './routes';
 function App() {
   return (
     <BrowserRouter>
-      <div className="flex flex-col min-h-screen bg-background">
+      <div className="flex flex-col min-h-screen bg-background text-on-background">
         <Header />
         <div className="flex-1">
           <AppRoutes />

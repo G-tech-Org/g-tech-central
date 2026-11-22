@@ -3,8 +3,8 @@ import { Button } from '@components/ui';
 export default function NotFound() {
   return (
     <main className="bg-surface min-h-[60vh] flex flex-col items-center justify-center text-center px-margin-mobile md:px-margin-desktop py-24">
-      <p className="font-label-md text-label-md text-teal font-bold uppercase tracking-widest mb-4">404</p>
-      <h1 className="font-headline-md text-headline-md md:font-display-lg-mobile md:text-display-lg-mobile text-primary-container mb-4">
+      <p className="eyebrow mb-4">404</p>
+      <h1 className="font-headline-md text-headline-md md:font-display-lg-mobile md:text-display-lg-mobile text-on-background mb-4">
         Page not found
       </h1>
       <p className="font-body-lg text-body-lg text-on-surface-variant max-w-md mb-8">
